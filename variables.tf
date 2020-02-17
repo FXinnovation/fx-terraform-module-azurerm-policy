@@ -54,20 +54,20 @@ variable "policy_management_group_ids" {
 
 variable "policy_rules" {
   description = "List of policy rules for the Policy definition. This is a json object representing the rule that contains an if and a then block."
-  type        = list(string)
-  default     = [""]
+  type        = list
+  default     = []
 }
 
 variable "policy_parameters" {
   description = "List of parameters for the Policy definition. This field is a json object that allows you to parameterize your policy definition."
-  type        = list(string)
-  default     = [""]
+  type        = list
+  default     = []
 }
 
 variable "policy_metadatas" {
   description = "List of  metadatas for the Policy definition. This is a json object representing additional metadata that should be stored with the policy definition."
-  type        = list(string)
-  default     = [""]
+  type        = list
+  default     = []
 }
 
 ###
@@ -117,8 +117,8 @@ variable "policy_assignment_display_names" {
 
 variable "policy_assignment_parameters" {
   description = "List of parameters for the policy definition. This field is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created."
-  type        = list(string)
-  default     = [""]
+  type        = list
+  default     = []
 }
 
 variable "policy_assignment_not_scopes" {
@@ -168,8 +168,8 @@ variable "policy_initiative_display_names" {
 
 variable "policy_initiative_definitions" {
   description = "The List which provides policy definitions for the policy set definition. This is a json object representing the bundled policy definitions ."
-  type        = list(string)
-  default     = [""]
+  type        = list
+  default     = []
 }
 
 variable "policy_initiative_descriptions" {
@@ -186,12 +186,12 @@ variable "policy_initiative_management_group_ids" {
 
 variable "policy_initiative_metadatas" {
   description = "A list which describes the metadata for the policy initiatives. This is a json object representing additional metadata that should be stored with the policy definition."
-  type        = list(string)
-  default     = [""]
+  type        = list
+  default     = []
 }
 
 variable "policy_initiative_parameters" {
   description = "List of arameters for the policy initiatives. This field is a json object that allows you to parameterize your policy definition."
-  type        = list(string)
-  default     = [""]
+  type        = list
+  default     = []
 }
