@@ -29,15 +29,15 @@ See `examples` folders for usage of this module.
 | policy\_definition\_enabled | Boolean flag which describes whether or not to enable Policy definition. | `bool` | `false` | no |
 | policy\_descriptions | List of descriptions which define the Policy definitions. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_display\_names | List of Policy definition display names. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiative\_definitions | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiative\_descriptions | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiative\_display\_names | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_definitions | The List which provides policy definitions for the policy set definition. This is a json object representing the bundled policy definitions . | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_descriptions | A list which provides the decriptions for the policy initiatives. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_display\_names | List of display names of the policy initiatives. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_initiative\_enabled | Boolean Flag which decribe whether or not enable the policy set definition. | `bool` | `false` | no |
-| policy\_initiative\_management\_group\_ids | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiative\_metadatas | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiative\_names | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiative\_parameters | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiative\_types | n/a | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_management\_group\_ids | List of IDs of the management group where this policy should be defined. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_metadatas | A list which describes the metadata for the policy initiatives. This is a json object representing additional metadata that should be stored with the policy definition. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_names | List of name of the policy initiatives. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_parameters | List of arameters for the policy initiatives. This field is a json object that allows you to parameterize your policy definition. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| policy\_initiative\_types | List of policy set types. Possible values are `BuiltIn` or `Custom`. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_management\_group\_ids | List of IDs of the management groups where this policy should be defined. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_metadatas | List of  metadatas for the Policy definition. This is a json object representing additional metadata that should be stored with the policy definition. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_modes | List of Policy modes that allows us to specify which resource types will be evaluated. The value can be `All`, `Indexed` or `NotSpecified`. Changing this resource forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |

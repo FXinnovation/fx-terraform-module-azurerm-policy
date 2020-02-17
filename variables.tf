@@ -149,49 +149,49 @@ variable "policy_initiative_enabled" {
 }
 
 variable "policy_initiative_names" {
-  description = ""
+  description = "List of name of the policy initiatives. Changing this forces a new resource to be created."
   type        = list(string)
   default     = [""]
 }
 
 variable "policy_initiative_types" {
-  description = ""
+  description = "List of policy set types. Possible values are `BuiltIn` or `Custom`. Changing this forces a new resource to be created."
   type        = list(string)
   default     = [""]
 }
 
 variable "policy_initiative_display_names" {
-  description = ""
+  description = "List of display names of the policy initiatives."
   type        = list(string)
   default     = [""]
 }
 
 variable "policy_initiative_definitions" {
-  description = ""
+  description = "The List which provides policy definitions for the policy set definition. This is a json object representing the bundled policy definitions ."
   type        = list(string)
   default     = [""]
 }
 
 variable "policy_initiative_descriptions" {
-  description = ""
+  description = "A list which provides the decriptions for the policy initiatives."
   type        = list(string)
   default     = [""]
 }
 
 variable "policy_initiative_management_group_ids" {
-  description = ""
+  description = "List of IDs of the management group where this policy should be defined. Changing this forces a new resource to be created."
   type        = list(string)
   default     = [""]
 }
 
 variable "policy_initiative_metadatas" {
-  description = ""
+  description = "A list which describes the metadata for the policy initiatives. This is a json object representing additional metadata that should be stored with the policy definition."
   type        = list(string)
   default     = [""]
 }
 
 variable "policy_initiative_parameters" {
-  description = ""
+  description = "List of arameters for the policy initiatives. This field is a json object that allows you to parameterize your policy definition."
   type        = list(string)
   default     = [""]
 }
