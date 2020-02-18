@@ -22,8 +22,8 @@ module "custom" {
   policy_display_names      = ["terraform_test${random_string.this.result}"]
 
   policy_rules      = [for f in local.custom_policy_rules_files_string : file("./policies/policy_rules/${f}")]
-  policy_parameters = [for f in local.custom_parameters_files_string : file("./policies/parameters/${f}")]
-  policy_metadatas  = [for f in local.custom_metadata_files_string : file("./policies/metadata/${f}")]
+  policy_parameters = [for f in local.custom_policy_parameters_files_string : file("./policies/parameters/${f}")]
+  policy_metadatas  = [for f in local.custom_policy_metadata_files_string : file("./policies/metadata/${f}")]
 
   policy_assignment_enabled    = true
   policy_assignment_scopes     = ["/SCOPE"]
