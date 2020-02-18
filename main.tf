@@ -39,9 +39,9 @@ resource "azurerm_policy_definition" "this" {
   display_name        = element(var.policy_display_names, count.index)
   description         = element(var.policy_descriptions, count.index)
   management_group_id = element(var.policy_management_group_ids, count.index)
-  metadata            = file(element(local.policy_definition_metadata_files, count.index))
-  policy_rule         = file(element(local.policy_definition_rule_files, count.index))
-  parameters          = file(element(local.policy_definition_parameter_files, count.index))
+  metadata            = file("${var.path_to_policy_definition_metadatas}/${element(local.policy_definition_metadata_files, count.index)}")
+  policy_rule         = file("${var.path_to_policy_definition_rules}/${element(local.policy_definition_rule_files, count.index)}")
+  parameters          = file("${var.path_to_policy_initiative_parameters}/${element(local.policy_definition_parameter_files, count.index)}")
 
   lifecycle {
     # Ignore metadata changes as Azure adds additional metadata module does not handle
@@ -64,8 +64,8 @@ resource "azurerm_policy_assignment" "this_assignment" {
   location             = element(var.policy_assignment_locations, count.index)
   description          = element(var.policy_assignment_descriptions, count.index)
   display_name         = element(var.policy_assignment_display_names, count.index)
-  parameters           = file(element(local.policy_assignment_parameter_files, count.index))
-  not_scopes           = element(var.policy_assignment_not_scopes, count.index)
+  parameters           = file("${var.path_to_policy_assignment_parameters}/${element(local.policy_assignment_parameter_files, count.index)}")
+  #not_scopes           = element(var.policy_assignment_not_scopes, count.index)
 
   dynamic "identity" {
     for_each = var.identities[count.index]
@@ -86,9 +86,9 @@ resource "azurerm_policy_set_definition" "this_definition" {
   name                = element(var.policy_initiative_names, count.index)
   policy_type         = element(var.policy_initiative_types, count.index)
   display_name        = element(var.policy_initiative_display_names, count.index)
-  policy_definitions  = file(element(local.policy_initiative_policy_definition_files, count.index))
+  policy_definitions  = file("${var.path_to_policy_initiative_policy_definitions}/${element(local.policy_initiative_policy_definition_files, count.index)}")
   description         = element(var.policy_initiative_descriptions, count.index)
   management_group_id = element(var.policy_initiative_management_group_ids, count.index)
-  metadata            = file(element(local.policy_initiative_metadata_files, count.index))
-  parameters          = file(element(local.policy_initiative_parameter_files, count.index))
+  metadata            = file("${var.path_to_policy_initiative_metadatas}/${element(local.policy_initiative_metadata_files, count.index)}")
+  parameters          = file("${var.path_to_policy_initiative_parameters}/${element(local.policy_initiative_parameter_files, count.index)}")
 }
