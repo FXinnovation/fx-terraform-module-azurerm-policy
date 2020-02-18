@@ -19,7 +19,7 @@ variable "policy_definition_enabled" {
 variable "policy_names" {
   description = "List of Policy definition names. Changing this force a new resourec to be created. "
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "policy_types" {
@@ -85,7 +85,7 @@ variable "policy_assignment_scopes" {
   default     = [""]
 }
 
-variable "policy_assignment_definition_ids" {
+variable "policy_assignment_policy_definition_ids" {
   description = "List of  IDs of the Policy Definition to be applied at the specified Scope"
   type        = list(string)
   default     = [""]
