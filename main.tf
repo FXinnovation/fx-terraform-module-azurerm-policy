@@ -25,7 +25,7 @@ resource "azurerm_policy_definition" "this" {
   lifecycle {
     # Ignore metadata changes as Azure adds additional metadata module does not handle
     ignore_changes = [
-      "metadata",
+      metadata,
     ]
   }
 }
@@ -37,20 +37,20 @@ resource "azurerm_policy_definition" "this" {
 resource "azurerm_policy_assignment" "this_assignment" {
   count = local.should_create_policy_assignment ? length(var.policy_names) : 0
 
-  name                 = "${var.policy_names}-${count.index}"
+  name                 = "${element(var.policy_names, count.index)}-${count.index}"
   scope                = element(var.policy_assignment_scopes, count.index)
   policy_definition_id = element(var.policy_names, count.index) != null ? element(azurerm_policy_set_definition.this_definition.*.id, count.index) : var.policy_assignment_policy_definition_ids
   location             = element(var.policy_assignment_locations, count.index)
   description          = element(var.policy_assignment_descriptions, count.index)
   display_name         = element(var.policy_assignment_display_names, count.index)
   parameters           = element(var.policy_assignment_parameters, count.index)
-  not_scopes           = [element(var.policy_assignment_not_scopes, count.index)]
+  not_scopes           = element(var.policy_assignment_not_scopes, count.index)
 
   dynamic "identity" {
     for_each = var.identities[count.index]
 
     content {
-      type = var.policy_assignment_types
+      type = identity.policy_assignment_types
     }
   }
 }

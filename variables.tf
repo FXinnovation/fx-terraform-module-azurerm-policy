@@ -116,21 +116,15 @@ variable "policy_assignment_parameters" {
 }
 
 variable "policy_assignment_not_scopes" {
-  description = "    A list of the Policy assignment's excluded scopes. The list must contain resource IDs (such as subscriptions e.g. `/subscriptions/00000000-0000-0000-000000000000` or resource groups e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`)."
-  type        = list(string)
-  default     = [""]
+  description = "A list of the Policy assignment's excluded scopes. The list must contain resource IDs (such as subscriptions e.g. `/subscriptions/00000000-0000-0000-000000000000` or resource groups e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`)."
+  type        = list(list(string))
+  default     = [[]]
 }
 
 variable "identities" {
-  description = "One or more identity blocks."
-  type        = list
-  default     = []
-}
-
-variable "policy_assignment_types" {
-  description = "List of the managed service identity type of this Policy assignment. Possible values are `SystemAssigned` (where Azure will generate a service principal for you), or None (no use of a managed service identity)."
-  type        = list(string)
-  default     = [""]
+  description = "One or more identity blocks. Possible values for the policy assignment types are `SystemAssigned` (where Azure will generate a service principal for you), or None (no use of a managed service identity)."
+  type        = list(list(object({ policy_assignment_types = list(string) })))
+  default     = [[]]
 }
 
 ###
