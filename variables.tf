@@ -79,12 +79,6 @@ variable "policy_assignment_enabled" {
   default     = false
 }
 
-variable "policy_assignment_names" {
-  description = "List of names of the Policy Assignment. Changing this forces a new resource to be created."
-  type        = list(string)
-  default     = [""]
-}
-
 variable "policy_assignment_scopes" {
   description = "List of scopes at which the Policy Assignment should be applied, which must be a Resource ID (such as Subscription e.g. `/subscriptions/00000000-0000-0000-000000000000` or a Resource Group e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). Changing this forces a new resource to be created."
   type        = list(string)

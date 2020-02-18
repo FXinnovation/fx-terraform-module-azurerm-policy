@@ -37,7 +37,7 @@ resource "azurerm_policy_definition" "this" {
 resource "azurerm_policy_assignment" "this_assignment" {
   count = local.should_create_policy_assignment ? length(var.policy_assignment_names) : 0
 
-  name                 = var.policy_assignment_names[count.index]
+  name                 = "${var.policy_names}-${count.index}"
   scope                = var.policy_assignment_scopes[count.index]
   policy_definition_id = var.policy_definition_enabled ? element(azurerm_policy_set_definition.this_definition.*.id, count.index) : var.policy_assignment_definition_ids
   location             = var.policy_assignment_locations[count.index]
