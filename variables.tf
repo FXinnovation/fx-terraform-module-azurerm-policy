@@ -52,22 +52,22 @@ variable "policy_management_group_ids" {
   default     = [""]
 }
 
-variable "policy_rules" {
-  description = "List of policy rules for the Policy definition. This is a json object representing the rule that contains an if and a then block."
-  type        = list
-  default     = []
+variable "path_to_policy_definition_rules" {
+  description = "Path to the json file where the policy rule are defined. The file is a json object representing the rule that contains an if and a then block."
+  type        = string
+  default     = ""
 }
 
-variable "policy_parameters" {
-  description = "List of parameters for the Policy definition. This field is a json object that allows you to parameterize your policy definition."
-  type        = list
-  default     = []
+variable "path_to_policy_definition_parameters" {
+  description = "Path to the json file where the policy parameters are defined. The file is a json object that allows you to parameterize your policy definition."
+  type        = string
+  default     = ""
 }
 
-variable "policy_metadatas" {
-  description = "List of  metadatas for the Policy definition. This is a json object representing additional metadata that should be stored with the policy definition."
-  type        = list
-  default     = []
+variable "path_to_policy_definition_metadatas" {
+  description = "Path to the json file where the policy metadataas are defined. The file a json object representing additional metadata that should be stored with the policy definition."
+  type        = string
+  default     = ""
 }
 
 ###
@@ -75,8 +75,19 @@ variable "policy_metadatas" {
 ###
 
 variable "policy_assignment_enabled" {
-  description = "Boolean flag which describes whether or not to enable the policy assignment."
+  description = "Boolean flag which describes whether or not to enable the Policy assignment."
   default     = false
+}
+
+variable "policy_assignment_names_enabled" {
+  description = "Boolean flag wheich describes whether or not use the same custom Policy definition names in Policy assignment."
+  default     = false
+}
+
+variable "policy_assignment_names" {
+  description = "A list of Policy assignment names.Changing this forces a new resource to be created. "
+  type        = list(string)
+  default     = [""]
 }
 
 variable "policy_assignment_scopes" {
@@ -109,16 +120,16 @@ variable "policy_assignment_display_names" {
   default     = [""]
 }
 
-variable "policy_assignment_parameters" {
-  description = "List of parameters for the policy definition. This field is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created."
-  type        = list
-  default     = []
+variable "path_to_policy_assignment_parameters" {
+  description = "Path to the json file where the policy assignment parameters are defined. The  file is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created."
+  type        = string
+  default     = ""
 }
 
 variable "policy_assignment_not_scopes" {
   description = "A list of the Policy assignment's excluded scopes. The list must contain resource IDs (such as subscriptions e.g. `/subscriptions/00000000-0000-0000-000000000000` or resource groups e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`)."
   type        = list(list(string))
-  default     = [[]]
+  default     = [[""]]
 }
 
 variable "identities" {
@@ -154,10 +165,10 @@ variable "policy_initiative_display_names" {
   default     = [""]
 }
 
-variable "policy_initiative_definitions" {
-  description = "The List which provides policy definitions for the policy set definition. This is a json object representing the bundled policy definitions ."
-  type        = list
-  default     = []
+variable "path_to_policy_initiative_policy_definitions" {
+  description = "Path to the json file where the policy initiative policy definition are defined. This is a json object representing the bundled policy definitions ."
+  type        = string
+  default     = ""
 }
 
 variable "policy_initiative_descriptions" {
@@ -172,14 +183,14 @@ variable "policy_initiative_management_group_ids" {
   default     = [""]
 }
 
-variable "policy_initiative_metadatas" {
-  description = "A list which describes the metadata for the policy initiatives. This is a json object representing additional metadata that should be stored with the policy definition."
-  type        = list
-  default     = []
+variable "path_to_policy_initiative_metadatas" {
+  description = "Path to the json file where the policy initiatives parameters are defined. The file is a json object representing additional metadata that should be stored with the policy definition."
+  type        = string
+  default     = ""
 }
 
-variable "policy_initiative_parameters" {
-  description = "List of arameters for the policy initiatives. This field is a json object that allows you to parameterize your policy definition."
-  type        = list
-  default     = []
+variable "path_to_policy_initiative_parameters" {
+  description = "Path to the json file where the policy initiative parameters are defined. The file is a json object that allows you to parameterize your policy definition."
+  type        = string
+  default     = ""
 }

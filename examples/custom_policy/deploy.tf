@@ -1,10 +1,9 @@
 data "azurerm_client_config" "current" {}
 
 locals {
-
-  custom_policy_metadata_files_string   = fileset("${path.root}/policies/metadata", "*")
-  custom_policy_rules_files_string      = fileset("${path.root}/policies/policy_rules", "*")
-  custom_policy_parameters_files_string = fileset("${path.root}/policies/parameters", "*")
+  custom_policy_metadata_files_string   = "${path.root}/policies/metadata"
+  custom_policy_rules_files_string      = "${path.root}/policies/policy_rules"
+  custom_policy_parameters_files_string = "${path.root}/policies/parameters"
 }
 
 
@@ -22,9 +21,9 @@ module "custom" {
   policy_modes              = ["All"]
   policy_display_names      = ["terraform_test${random_string.this.result}"]
 
-  policy_rules      = [for f in local.custom_policy_rules_files_string : file("${path.root}/policies/policy_rules/${f}")]
-  policy_parameters = [for f in local.custom_policy_parameters_files_string : file("${path.root}/policies/parameters/${f}")]
-  policy_metadatas  = [for f in local.custom_policy_metadata_files_string : file("${path.root}/policies/metadata/${f}")]
+  path_to_policy_definition_rules     = "${local.custom_policy_rules_files_string}"
+  path_to_policy_definition_metadatas = "${local.custom_policy_metadata_files_string}"
+  path_to_policy_definition_paramters = "${local.custom_policy_parameters_files_string}"
 
   policy_assignment_enabled    = true
   policy_assignment_scopes     = ["/SCOPE"]
