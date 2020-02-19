@@ -79,11 +79,6 @@ variable "policy_assignment_enabled" {
   default     = false
 }
 
-variable "policy_assignment_names_enabled" {
-  description = "Boolean flag wheich describes whether or not use the same custom Policy definition names in Policy assignment."
-  default     = false
-}
-
 variable "policy_assignment_names" {
   description = "A list of Policy assignment names.Changing this forces a new resource to be created. "
   type        = list(string)
