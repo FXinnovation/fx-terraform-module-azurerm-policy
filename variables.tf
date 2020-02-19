@@ -115,10 +115,16 @@ variable "policy_assignment_display_names" {
   default     = [""]
 }
 
-variable "policy_assignment_parameters" {
-  description = "A list of policy assignment parameters. This is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created."
-  type        = list(string)
-  default     = [""]
+variable "policy_assignmnet_parameters" {
+  description = "A list of Boolean flag which describes whether the assignmnet of the policy has any associated parameters or not."
+  type        = list(bool)
+  default     = [false]
+}
+
+variable "path_to_policy_assignment_parameters" {
+  description = "Path to the json file where policy assignment parameters are defined. This is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created."
+  type        = string
+  default     = ""
 }
 
 variable "policy_assignment_not_scopes" {

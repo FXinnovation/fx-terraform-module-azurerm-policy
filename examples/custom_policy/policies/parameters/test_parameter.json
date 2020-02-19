@@ -1,7 +1,6 @@
 {
 	"listOfAllowedLocations": {
 		"type": "Array",
-		"value": ["West Europe"],
 		"metadata": {
 			"description": "The list of locations that can be specified when deploying resources.",
 			"strongType": "location",
