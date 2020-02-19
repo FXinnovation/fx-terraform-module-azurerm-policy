@@ -1,6 +1,6 @@
 # Custom policy example
 
-This should create custom policy and perform the policy assignmnet.
+This should create custom policy and perform the policy assignment.
 
 ## Usage
 ```

@@ -8,8 +8,8 @@ output "policy_set_definition_ids" {
   value       = compact(concat(azurerm_policy_set_definition.this_definition.*.id, [""]))
 }
 
-output "policy_assignmnet_ids" {
-  description = "The IDs of the Policy assignmnets."
+output "policy_assignment_ids" {
+  description = "The IDs of the Policy assignments."
   value       = compact(concat(azurerm_policy_assignment.this_assignment.*.id, [""]))
 }
 

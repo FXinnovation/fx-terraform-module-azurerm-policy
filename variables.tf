@@ -116,7 +116,7 @@ variable "policy_assignment_display_names" {
 }
 
 variable "policy_assignment_parameters" {
-  description = "A list of Boolean flag which describes whether the assignmnet of the policy has any associated parameters or not."
+  description = "A list of Boolean flag which describes whether the assignment of the policy has any associated parameters or not."
   type        = list(bool)
   default     = [false]
 }

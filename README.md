@@ -30,7 +30,7 @@ See `examples` folders for usage of this module.
 | policy\_assignment\_locations | List of Azure locations where this policy assignment should exist. This is required when an Identity is assigned. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_names | A list of Policy assignment names.Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_not\_scopes | A list of the Policy assignment's excluded scopes. The list must contain resource IDs (such as subscriptions e.g. `/subscriptions/00000000-0000-0000-000000000000` or resource groups e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). | `list(list(string))` | <pre>[<br>  [<br>    ""<br>  ]<br>]</pre> | no |
-| policy\_assignment\_parameters | A list of Boolean flag which describes whether the assignmnet of the policy has any associated parameters or not. | `list(bool)` | <pre>[<br>  false<br>]</pre> | no |
+| policy\_assignment\_parameters | A list of Boolean flag which describes whether the assignment of the policy has any associated parameters or not. | `list(bool)` | <pre>[<br>  false<br>]</pre> | no |
 | policy\_assignment\_policy\_definition\_ids | List of  IDs of the Policy Definition to be applied at the specified Scope | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_scopes | List of scopes at which the Policy Assignment should be applied, which must be a Resource ID (such as Subscription e.g. `/subscriptions/00000000-0000-0000-000000000000` or a Resource Group e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_definition\_enabled | Boolean flag which describes whether or not to enable Policy definition. | `bool` | `false` | no |
@@ -52,7 +52,7 @@ See `examples` folders for usage of this module.
 | Name | Description |
 |------|-------------|
 | identities | n/a |
-| policy\_assignmnet\_ids | The IDs of the Policy assignmnets. |
+| policy\_assignment\_ids | The IDs of the Policy assignments. |
 | policy\_definition\_ids | The IDs of the Policy definition. |
 | policy\_set\_definition\_ids | The IDs of the Policy set definitions. |
 

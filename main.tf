@@ -64,7 +64,7 @@ resource "azurerm_policy_assignment" "this_assignment" {
   location             = element(var.policy_assignment_locations, count.index)
   description          = element(var.policy_assignment_descriptions, count.index)
   display_name         = element(var.policy_assignment_display_names, count.index)
-  parameters           = element(var.policy_assignmnet_parameters, count.index) != false ? file("${var.path_to_policy_assignment_parameters}/${element(local.policy_assignment_parameter_files, count.index)}") : ""
+  parameters           = element(var.policy_assignment_parameters, count.index) != false ? file("${var.path_to_policy_assignment_parameters}/${element(local.policy_assignment_parameter_files, count.index)}") : ""
   #not_scopes           = element(var.policy_assignment_not_scopes, count.index)
 
   dynamic "identity" {
