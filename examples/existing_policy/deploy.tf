@@ -15,8 +15,8 @@ module "existing" {
   source = "../.."
 
   policy_assignment_names                 = ["tf${random_string.this.result}"]
-  policy_assignment_scope                 = ["/subscriptions/${var.subscription_id}"]
+  policy_assignment_scopes                = ["/subscriptions/${var.subscription_id}"]
   policy_assignment_policy_definition_ids = ["/providers/Microsoft.Authorization/policyDefinitions/0e60b895-3786-45da-8377-9c6b4b6ac5f9"]
-  policy_assignment_location              = ["westeurope"]
-  policy_display_name                     = ["${random_string.this}"]
+  policy_assignment_locations             = ["westeurope"]
+  policy_display_names                    = ["${random_string.this}"]
 }
