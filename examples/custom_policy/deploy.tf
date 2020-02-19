@@ -12,6 +12,11 @@ resource "random_string" "this" {
   upper   = false
   special = false
 }
+resource "azurerm_resource_group" "example" {
+  name     = "tftest${random_string.this.result}"
+  location = "West US"
+}
+
 module "custom" {
   source = "../.."
 
@@ -27,5 +32,5 @@ module "custom" {
 
   policy_assignment_enabled       = true
   policy_assignment_names_enabled = true
-  policy_assignment_scopes        = ["/SCOPE"]
+  policy_assignment_scopes        = ["/subscription/${var.subscription_id}/resourceGroups/tftest${random_string.this.result}"]
 }

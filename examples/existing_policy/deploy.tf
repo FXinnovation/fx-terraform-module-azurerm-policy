@@ -5,11 +5,17 @@ resource "random_string" "this" {
   upper   = false
   special = false
 }
+
+resource "azurerm_resource_group" "example" {
+  name     = "tftest${random_string.this.result}"
+  location = "West US"
+}
+
 module "existing" {
   source = "../.."
 
   policy_names                            = ["tf${random_string.this.result}"]
-  policy_assignmnet_scope                 = ["/SCOPE"]
+  policy_assignmnet_scope                 = ["/subscriptions/${var.subscription_id}/resourceGroups/tftest${random_string.this.result}"]
   policy_assignment_policy_definition_ids = ["/providers/Microsoft.Authorization/policyDefinitions/0e60b895-3786-45da-8377-9c6b4b6ac5f9"]
   policy_assignmnet_location              = ["westeurope"]
   policy_display_name                     = ["${random_string.this}"]
