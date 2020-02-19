@@ -32,5 +32,5 @@ module "custom" {
 
   policy_assignment_enabled       = true
   policy_assignment_names_enabled = true
-  policy_assignment_scopes        = ["/subscription/${var.subscription_id}"]
+  policy_assignment_scopes        = ["/subscriptions/${var.subscription_id}"]
 }
