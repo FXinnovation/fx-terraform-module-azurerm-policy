@@ -32,5 +32,5 @@ module "custom" {
 
   policy_assignment_enabled       = true
   policy_assignment_names_enabled = true
-  policy_assignment_scopes        = ["/subscription/${var.subscription_id}/resourceGroups/tftest${random_string.this.result}"]
+  policy_assignment_scopes        = ["/subscription/${var.subscription_id}"]
 }
