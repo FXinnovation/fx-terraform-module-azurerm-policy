@@ -15,7 +15,7 @@ See `examples` folders for usage of this module.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | enabled | Enable or disable modul | `bool` | `true` | no |
-| identities | One or more identity blocks. Possible values for the policy assignment types are `SystemAssigned` (where Azure will generate a service principal for you), or None (no use of a managed service identity). | `list(list(object({ policy_assignment_types = list(string) })))` | <pre>[<br>  []<br>]</pre> | no |
+| identities | One or more identity blocks. Possible values for the policy assignment types are `SystemAssigned` (where Azure will generate a service principal for you), or None (no use of a managed service identity). | `list(list(object({ policy_assignment_types = list(string) })))` | `[]` | no |
 | path\_to\_policy\_definition\_metadatas | Path to the json file where the policy metadataas are defined. The file a json object representing additional metadata that should be stored with the policy definition. | `string` | `""` | no |
 | path\_to\_policy\_definition\_parameters | Path to the json file where the policy parameters are defined. The file is a json object that allows you to parameterize your policy definition. | `string` | `""` | no |
 | path\_to\_policy\_definition\_rules | Path to the json file where the policy rule are defined. The file is a json object representing the rule that contains an if and a then block. | `string` | `""` | no |

@@ -130,7 +130,7 @@ variable "policy_assignment_not_scopes" {
 variable "identities" {
   description = "One or more identity blocks. Possible values for the policy assignment types are `SystemAssigned` (where Azure will generate a service principal for you), or None (no use of a managed service identity)."
   type        = list(list(object({ policy_assignment_types = list(string) })))
-  default     = [[]]
+  default     = []
 }
 
 ###
