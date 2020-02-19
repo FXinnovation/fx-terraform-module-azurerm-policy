@@ -25,8 +25,7 @@ module "custom" {
   path_to_policy_definition_metadatas  = "${local.custom_policy_metadata_files_string}"
   path_to_policy_definition_parameters = "${local.custom_policy_parameters_files_string}"
 
-  policy_assignment_enabled    = true
-  policy_assignment_scopes     = ["/SCOPE"]
-  policy_assignment_not_scopes = []
-
+  policy_assignment_enabled       = true
+  policy_assignment_names_enabled = true
+  policy_assignment_scopes        = ["/SCOPE"]
 }

@@ -12,9 +12,6 @@ locals {
   policy_definition_parameter_files_string = join(",", fileset(var.path_to_policy_definition_parameters, "*"))
   policy_definition_parameter_files        = split(",", local.policy_definition_parameter_files_string)
 
-  policy_assignment_parameter_files_string = join(",", fileset(var.path_to_policy_assignment_parameters, "*"))
-  policy_assignment_parameter_files        = split(",", local.policy_assignment_parameter_files_string)
-
   policy_initiative_policy_definition_files_string = join(",", fileset(var.path_to_policy_initiative_policy_definitions, "*"))
   policy_initiative_policy_definition_files        = split(",", local.policy_initiative_policy_definition_files_string)
 
@@ -41,7 +38,7 @@ resource "azurerm_policy_definition" "this" {
   management_group_id = element(var.policy_management_group_ids, count.index)
   metadata            = file("${var.path_to_policy_definition_metadatas}/${element(local.policy_definition_metadata_files, count.index)}")
   policy_rule         = file("${var.path_to_policy_definition_rules}/${element(local.policy_definition_rule_files, count.index)}")
-  parameters          = file("${var.path_to_policy_initiative_parameters}/${element(local.policy_definition_parameter_files, count.index)}")
+  parameters          = file("${var.path_to_policy_definition_parameters}/${element(local.policy_definition_parameter_files, count.index)}")
 
   lifecycle {
     # Ignore metadata changes as Azure adds additional metadata module does not handle
@@ -64,7 +61,7 @@ resource "azurerm_policy_assignment" "this_assignment" {
   location             = element(var.policy_assignment_locations, count.index)
   description          = element(var.policy_assignment_descriptions, count.index)
   display_name         = element(var.policy_assignment_display_names, count.index)
-  parameters           = file("${var.path_to_policy_assignment_parameters}/${element(local.policy_assignment_parameter_files, count.index)}")
+  parameters           = element(var.policy_assignment_parameters, count.index)
   #not_scopes           = element(var.policy_assignment_not_scopes, count.index)
 
   dynamic "identity" {
