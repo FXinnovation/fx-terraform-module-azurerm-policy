@@ -57,7 +57,7 @@ resource "azurerm_policy_assignment" "this_assignment" {
 
   name                 = var.policy_assignment_names_enabled ? "${element(var.policy_names, count.index)}-${count.index}" : element(var.policy_assignment_names, count.index)
   scope                = element(var.policy_assignment_scopes, count.index)
-  policy_definition_id = element(var.policy_names, count.index) != null ? element(azurerm_policy_set_definition.this_definition.*.id, count.index) : var.policy_assignment_policy_definition_ids
+  policy_definition_id = element(var.policy_names, count.index) != null ? element(azurerm_policy_definition.this.*.id, count.index) : var.policy_assignment_policy_definition_ids
   location             = element(var.policy_assignment_locations, count.index)
   description          = element(var.policy_assignment_descriptions, count.index)
   display_name         = element(var.policy_assignment_display_names, count.index)
