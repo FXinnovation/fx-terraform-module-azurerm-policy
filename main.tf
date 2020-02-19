@@ -65,7 +65,7 @@ resource "azurerm_policy_assignment" "this_assignment" {
   #not_scopes           = element(var.policy_assignment_not_scopes, count.index)
 
   dynamic "identity" {
-    for_each = var.identities[count.index]
+    for_each = var.policy_assignment_identity_enabled ? var.identities[count.index] : []
 
     content {
       type = identity.policy_assignment_types

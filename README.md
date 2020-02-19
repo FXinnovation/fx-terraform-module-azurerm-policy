@@ -25,6 +25,7 @@ See `examples` folders for usage of this module.
 | policy\_assignment\_descriptions | List of descriptions to use for the  Policy assignments. Changing this force a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_display\_names | List of display names to use for this Policy Assignment. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_enabled | Boolean flag which describes whether or not to enable the Policy assignment. | `bool` | `false` | no |
+| policy\_assignment\_identity\_enabled | Boolean lag which describes whether to enable the identity block or not. | `bool` | `false` | no |
 | policy\_assignment\_locations | List of Azure locations where this policy assignment should exist. This is required when an Identity is assigned. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_names | A list of Policy assignment names.Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_not\_scopes | A list of the Policy assignment's excluded scopes. The list must contain resource IDs (such as subscriptions e.g. `/subscriptions/00000000-0000-0000-000000000000` or resource groups e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). | `list(list(string))` | <pre>[<br>  [<br>    ""<br>  ]<br>]</pre> | no |
