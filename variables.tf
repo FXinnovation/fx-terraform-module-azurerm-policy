@@ -19,7 +19,7 @@ variable "policy_definition_enabled" {
 variable "policy_names" {
   description = "List of Policy definition names. Changing this force a new resourec to be created. "
   type        = list(string)
-  default     = []
+  default     = [""]
 }
 
 variable "policy_types" {

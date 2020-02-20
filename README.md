@@ -43,7 +43,7 @@ See `examples` folders for usage of this module.
 | policy\_initiative\_types | List of policy set types. Possible values are `BuiltIn` or `Custom`. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_management\_group\_ids | List of IDs of the management groups where this policy should be defined. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_modes | List of Policy modes that allows us to specify which resource types will be evaluated. The value can be `All`, `Indexed` or `NotSpecified`. Changing this resource forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_names | List of Policy definition names. Changing this force a new resourec to be created. | `list(string)` | `[]` | no |
+| policy\_names | List of Policy definition names. Changing this force a new resourec to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_types | List of Policy types. The value can be `BuiltIn`, `Custom` or `NotSpecified`. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 
 ## Outputs
