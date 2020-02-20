@@ -124,7 +124,7 @@ variable "path_to_policy_assignment_parameters" {
 variable "policy_assignment_not_scopes" {
   description = "A list of the Policy assignment's excluded scopes. The list must contain resource IDs (such as subscriptions e.g. `/subscriptions/00000000-0000-0000-000000000000` or resource groups e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`)."
   type        = list(list(string))
-  default     = [[""]]
+  default     = [[]]
 }
 
 variable "policy_assignment_identity_enabled" {
