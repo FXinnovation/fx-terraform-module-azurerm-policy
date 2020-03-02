@@ -14,7 +14,7 @@ terraform destroy
 
 | Name | Version |
 |------|---------|
-| azurerm | ~>1.41.0 |
+| azurerm | >= 1.36.0, < 2.0.0 |
 | random | n/a |
 
 ## Inputs

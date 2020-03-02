@@ -8,13 +8,14 @@ See `examples` folders for usage of this module.
 
 | Name | Version |
 |------|---------|
-| azurerm | n/a |
+| azurerm | >= 1.36.0, < 2.0.0 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | enabled | Enable or disable modul | `bool` | `true` | no |
+| existing\_policy\_definition\_ids | List of  IDs of the Policy Definition to be applied at the specified Scope | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | identities | One or more identity blocks. Possible values for the policy assignment types are `SystemAssigned` (where Azure will generate a service principal for you), or None (no use of a managed service identity). | `list(list(object({ policy_assignment_types = list(string) })))` | `[]` | no |
 | path\_to\_policy\_assignment\_parameters | Path to the json file where policy assignment parameters are defined. This is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created. | `string` | `""` | no |
 | path\_to\_policy\_definition\_metadatas | Path to the json file where the policy metadataas are defined. The file a json object representing additional metadata that should be stored with the policy definition. | `string` | `""` | no |
@@ -30,7 +31,6 @@ See `examples` folders for usage of this module.
 | policy\_assignment\_locations | List of Azure locations where this policy assignment should exist. This is required when an Identity is assigned. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_names | A list of Policy assignment names.Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_not\_scopes | A list of the Policy assignment's excluded scopes. The list must contain resource IDs (such as subscriptions e.g. `/subscriptions/00000000-0000-0000-000000000000` or resource groups e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). | `list(list(string))` | <pre>[<br>  []<br>]</pre> | no |
-| policy\_assignment\_policy\_definition\_ids | List of  IDs of the Policy Definition to be applied at the specified Scope | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_assignment\_scopes | List of scopes at which the Policy Assignment should be applied, which must be a Resource ID (such as Subscription e.g. `/subscriptions/00000000-0000-0000-000000000000` or a Resource Group e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_definition\_enabled | Boolean flag which describes whether or not to enable Policy definition. | `bool` | `false` | no |
 | policy\_descriptions | List of descriptions which define the Policy definitions. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |

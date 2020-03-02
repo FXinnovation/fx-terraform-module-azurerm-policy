@@ -91,7 +91,7 @@ variable "policy_assignment_scopes" {
   default     = [""]
 }
 
-variable "policy_assignment_policy_definition_ids" {
+variable "existing_policy_definition_ids" {
   description = "List of  IDs of the Policy Definition to be applied at the specified Scope"
   type        = list(string)
   default     = [""]
