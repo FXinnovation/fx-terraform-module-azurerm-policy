@@ -11,63 +11,55 @@ variable "enabled" {
 # Policy definition
 ###
 
-variable "policy_definition_enabled" {
+variable "custom_policy_definition_enabled" {
   description = "Boolean flag which describes whether or not to enable Policy definition."
   default     = false
 }
 
-variable "policy_names" {
+variable "custom_policy_names" {
   description = "List of Policy definition names. Changing this force a new resourec to be created. "
   type        = list(string)
   default     = [""]
 }
 
-variable "policy_types" {
+variable "custom_policy_types" {
   description = "List of Policy types. The value can be `BuiltIn`, `Custom` or `NotSpecified`. Changing this forces a new resource to be created. "
   type        = list(string)
   default     = [""]
 }
 
-variable "policy_modes" {
+variable "custom_policy_modes" {
   description = "List of Policy modes that allows us to specify which resource types will be evaluated. The value can be `All`, `Indexed` or `NotSpecified`. Changing this resource forces a new resource to be created."
   type        = list(string)
   default     = [""]
 }
 
-variable "policy_display_names" {
+variable "custom_policy_display_names" {
   description = "List of Policy definition display names."
   type        = list(string)
   default     = [""]
 }
 
-variable "policy_descriptions" {
+variable "custom_policy_descriptions" {
   description = "List of descriptions which define the Policy definitions."
   type        = list(string)
   default     = [""]
 }
 
-variable "policy_management_group_ids" {
+variable "custom_policy_management_group_ids" {
   description = "List of IDs of the management groups where this policy should be defined. Changing this forces a new resource to be created."
   type        = list(string)
   default     = [""]
 }
 
-variable "path_to_policy_definition_rules" {
-  description = "Path to the json file where the policy rule are defined. The file is a json object representing the rule that contains an if and a then block."
-  type        = string
-  default     = ""
-}
-
-variable "path_to_policy_definition_parameters" {
-  description = "Path to the json file where the policy parameters are defined. The file is a json object that allows you to parameterize your policy definition."
-  type        = string
-  default     = ""
-}
-
-variable "path_to_policy_definition_metadatas" {
-  description = "Path to the json file where the policy metadataas are defined. The file a json object representing additional metadata that should be stored with the policy definition."
-  type        = string
-  default     = ""
+variable "custom_policies" {
+  description = "One or more custom policies."
+  type = list(object({
+    metadata    = string
+    policy_rule = string
+    parameters  = string
+  }))
+  default = [null]
 }
 
 ###
@@ -85,16 +77,22 @@ variable "policy_assignment_names" {
   default     = [""]
 }
 
-variable "policy_assignment_scopes" {
-  description = "List of scopes at which the Policy Assignment should be applied, which must be a Resource ID (such as Subscription e.g. `/subscriptions/00000000-0000-0000-000000000000` or a Resource Group e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). Changing this forces a new resource to be created."
-  type        = list(string)
-  default     = [""]
+variable "policy_assignments" {
+  description = "List scopes and parameters at which the Policy Assignment should be applied, which must be a Resource ID (such as Subscription e.g. `/subscriptions/00000000-0000-0000-000000000000` or a Resource Group e.g. `/subscriptions/00000000-0000-0000-000000000000/resourceGroups/myResourceGroup`). Changing this forces a new resource to be created."
+  type        = list(object({ scope = string, parameters = string }))
+  default     = [null]
 }
 
 variable "existing_policy_definition_ids" {
   description = "List of  IDs of the Policy Definition to be applied at the specified Scope"
   type        = list(string)
   default     = [""]
+}
+
+variable "policy_assignment_parameters_enabled" {
+  description = "List of boolean flags which describes the policy assignments has parameters or not."
+  type        = list(bool)
+  default     = [false]
 }
 
 variable "policy_assignment_locations" {
@@ -115,10 +113,10 @@ variable "policy_assignment_display_names" {
   default     = [""]
 }
 
-variable "path_to_policy_assignment_parameters" {
-  description = "Path to the json file where policy assignment parameters are defined. This is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created."
-  type        = string
-  default     = ""
+variable "policy_assignment_parameters" {
+  description = "This is a JSON object that maps to the Parameters field from the Policy Definition. Changing this forces a new resource to be created."
+  type        = list(string)
+  default     = [""]
 }
 
 variable "policy_assignment_not_scopes" {
@@ -129,13 +127,14 @@ variable "policy_assignment_not_scopes" {
 
 variable "policy_assignment_identity_enabled" {
   description = "Boolean lag which describes whether to enable the identity block or not."
-  default     = false
+  type        = list(bool)
+  default     = [false]
 }
 
-variable "identities" {
+variable "identity_type" {
   description = "One or more identity blocks. Possible values for the policy assignment types are `SystemAssigned` (where Azure will generate a service principal for you), or None (no use of a managed service identity)."
-  type        = list(list(object({ policy_assignment_types = list(string) })))
-  default     = []
+  type        = string
+  default     = "SystemAssigned"
 }
 
 ###
@@ -165,32 +164,24 @@ variable "policy_initiative_display_names" {
   default     = [""]
 }
 
-variable "path_to_policy_initiative_policy_definitions" {
-  description = "Path to the json file where the policy initiative policy definition are defined. This is a json object representing the bundled policy definitions ."
-  type        = string
-  default     = ""
-}
-
 variable "policy_initiative_descriptions" {
   description = "A list which provides the decriptions for the policy initiatives."
   type        = list(string)
   default     = [""]
 }
 
+variable "policy_initiatives" {
+  description = "One or more policy initiatives."
+  type = list(object({
+    policy_definitons = string
+    metadata          = string
+    parameters        = string
+  }))
+  default = null
+}
+
 variable "policy_initiative_management_group_ids" {
   description = "List of IDs of the management group where this policy should be defined. Changing this forces a new resource to be created."
   type        = list(string)
   default     = [""]
-}
-
-variable "path_to_policy_initiative_metadatas" {
-  description = "Path to the json file where the policy initiatives parameters are defined. The file is a json object representing additional metadata that should be stored with the policy definition."
-  type        = string
-  default     = ""
-}
-
-variable "path_to_policy_initiative_parameters" {
-  description = "Path to the json file where the policy initiative parameters are defined. The file is a json object that allows you to parameterize your policy definition."
-  type        = string
-  default     = ""
 }
