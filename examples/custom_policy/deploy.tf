@@ -116,5 +116,11 @@ module "custom" {
 
   policy_assignment_enabled = true
   policy_assignment_names   = ["tftest${random_string.this.result}"]
-  policy_assignment_scopes  = ["/subscriptions/${var.subscription_id}"]
+  policy_assignments = [
+    {
+      scope      = "/subscriptions/${var.subscription_id}"
+      parameters = <<PARAMETERS
+      PARAMETERS
+    }
+  ]
 }
