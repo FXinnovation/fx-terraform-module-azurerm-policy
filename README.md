@@ -4,6 +4,13 @@
 See `examples` folders for usage of this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+| azurerm | >= 2.0.0 |
+
 ## Providers
 
 | Name | Version |
@@ -13,7 +20,7 @@ See `examples` folders for usage of this module.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | custom\_policies | One or more custom policies. | <pre>list(object({<br>    metadata    = string<br>    policy_rule = string<br>    parameters  = string<br>  }))</pre> | <pre>[<br>  null<br>]</pre> | no |
 | custom\_policy\_definition\_enabled | Boolean flag which describes whether or not to enable Policy definition. | `bool` | `false` | no |
 | custom\_policy\_descriptions | List of descriptions which define the Policy definitions. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
@@ -41,7 +48,7 @@ See `examples` folders for usage of this module.
 | policy\_initiative\_management\_group\_ids | List of IDs of the management group where this policy should be defined. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_initiative\_names | List of name of the policy initiatives. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | policy\_initiative\_types | List of policy set types. Possible values are `BuiltIn` or `Custom`. Changing this forces a new resource to be created. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| policy\_initiatives | One or more policy initiatives. | <pre>list(object({<br>    policy_definitons = string<br>    metadata          = string<br>    parameters        = string<br>  }))</pre> | n/a | yes |
+| policy\_initiatives | One or more policy initiatives. | <pre>list(object({<br>    policy_definitons = string<br>    metadata          = string<br>    parameters        = string<br>  }))</pre> | `null` | no |
 
 ## Outputs
 
